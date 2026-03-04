@@ -13,13 +13,28 @@ const Teams = () => {
         console.log('Fetched data:', results);
       });
   }, []);
-  return (
-    <div>
-      <h2>Teams</h2>
-      <ul>
-        {data.map((item, idx) => <li key={item.id || idx}>{JSON.stringify(item)}</li>)}
-      </ul>
+  return ( 
+    <div className="card shadow mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-info">Teams</h2>
+        <table className="table table-striped table-bordered">
+          <thead className="table-info">
+            <tr>
+              <th>Name</th>
+              <th>Members</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, idx) => (
+              <tr key={item.id || idx}>
+                <td>{item.name || 'N/A'}</td>
+                <td>{item.members || 0}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button className="btn btn-info mt-3">Create Team</button>
+      </div>
     </div>
-  );
 };
 export default Teams;

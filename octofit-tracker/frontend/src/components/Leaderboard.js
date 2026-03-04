@@ -13,13 +13,28 @@ const Leaderboard = () => {
         console.log('Fetched data:', results);
       });
   }, []);
-  return (
-    <div>
-      <h2>Leaderboard</h2>
-      <ul>
-        {data.map((item, idx) => <li key={item.id || idx}>{JSON.stringify(item)}</li>)}
-      </ul>
-    </div>
-  );
+  return ( 
+    <div className="card shadow mb-4"> 
+      <div className="card-body"> 
+        <h2 className="card-title mb-4 text-success">Leaderboard</h2> 
+        <table className="table table-hover table-bordered"> 
+          <thead className="table-success"> 
+            <tr> 
+              <th>Name</th> 
+              <th>Points</th> 
+            </tr> 
+          </thead> 
+          <tbody> 
+            {data.map((item, idx) => ( 
+              <tr key={item.id || idx}> 
+                <td>{item.name}</td> 
+                <td>{item.points}</td> 
+              </tr> 
+            ))} 
+          </tbody> 
+        </table> 
+      </div> 
+    </div> 
+  ); 
 };
 export default Leaderboard;

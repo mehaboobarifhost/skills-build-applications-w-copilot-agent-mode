@@ -1,4 +1,7 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import logo from './logo.svg';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Activities from './components/Activities';
 import Leaderboard from './components/Leaderboard';
@@ -9,32 +12,38 @@ import Workouts from './components/Workouts';
 function App() {
   return (
     <Router>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">Octofit Tracker</Link>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item"><Link className="nav-link" to="/activities">Activities</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/leaderboard">Leaderboard</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/teams">Teams</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/users">Users</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/workouts">Workouts</Link></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div className="container">
-        <Routes>
-          <Route path="/activities" element={<Activities />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/teams" element={<Teams />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/workouts" element={<Workouts />} />
-          <Route path="/" element={<h2>Welcome to Octofit Tracker!</h2>} />
-        </Routes>
+      <div className="App bg-light min-vh-100">
+        <Navbar bg="primary" variant="dark" expand="lg">
+          <Container>
+            <Navbar.Brand href="#home" className="d-flex align-items-center">
+              <img src={logo} alt="Octofit Logo" className="octofit-logo" />
+              Octofit Tracker
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href="#activities">Activities</Nav.Link>
+                <Nav.Link href="#leaderboard">Leaderboard</Nav.Link>
+                <Nav.Link href="#teams">Teams</Nav.Link>
+                <Nav.Link href="#users">Users</Nav.Link>
+                <Nav.Link href="#workouts">Workouts</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+        <Container className="mt-4">
+          <h1 className="display-4 text-center mb-4">Welcome to Octofit Tracker</h1>
+          <Routes>
+            <Route path="/activities" element={<Activities />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/workouts" element={<Workouts />} />
+            <Route path="/" element={<h2>Welcome to Octofit Tracker!</h2>} />
+          </Routes>
+        </Container>
       </div>
     </Router>
   );
-}
 
 export default App;

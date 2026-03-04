@@ -13,13 +13,31 @@ const Activities = () => {
         console.log('Fetched data:', results);
       });
   }, []);
-  return (
-    <div>
-      <h2>Activities</h2>
-      <ul>
-        {data.map((item, idx) => <li key={item.id || idx}>{JSON.stringify(item)}</li>)}
-      </ul>
-    </div>
-  );
+    return (
+      <div className="card shadow mb-4">
+        <div className="card-body">
+          <h2 className="card-title mb-4 text-primary">Activities</h2>
+          <table className="table table-striped table-bordered">
+            <thead className="table-primary">
+              <tr>
+                <th>Name</th>
+                <th>Duration (min)</th>
+                <th>Calories</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, idx) => (
+                <tr key={item.id || idx}>
+                  <td>{item.name}</td>
+                  <td>{item.duration}</td>
+                  <td>{item.calories}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button className="btn btn-primary mt-3">Add Activity</button>
+        </div>
+      </div>
+    );
 };
 export default Activities;

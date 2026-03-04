@@ -14,11 +14,29 @@ const Workouts = () => {
       });
   }, []);
   return (
-    <div>
-      <h2>Workouts</h2>
-      <ul>
-        {data.map((item, idx) => <li key={item.id || idx}>{JSON.stringify(item)}</li>)}
-      </ul>
+    <div className="card shadow mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-warning">Workouts</h2>
+        <table className="table table-striped table-bordered">
+          <thead className="table-warning">
+            <tr>
+              <th>Name</th>
+              <th>Sets</th>
+              <th>Reps</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((workout, idx) => (
+              <tr key={workout.id || idx}>
+                <td>{workout.name}</td>
+                <td>{workout.sets}</td>
+                <td>{workout.reps}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button className="btn btn-warning mt-3">Add Workout</button>
+      </div>
     </div>
   );
 };
